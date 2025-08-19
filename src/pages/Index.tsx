@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Header } from "@/components/Header";
+import { HeroSection } from "@/components/HeroSection";
+import { BenefitsSection } from "@/components/BenefitsSection";
 import { AnimalCard } from "@/components/AnimalCard";
 import { Cart } from "@/components/Cart";
 import { Footer } from "@/components/Footer";
@@ -100,20 +102,26 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+    <div className="min-h-screen">
       <Header 
         cartItemsCount={cartItems.length} 
         onCartClick={() => setIsCartOpen(true)}
       />
       
-      <main className="container mx-auto px-4 py-8">
+      {/* Hero Section */}
+      <HeroSection />
+      
+      {/* Benefits Section */}
+      <BenefitsSection />
+      
+      {/* Products Section */}
+      <main className="container mx-auto px-4 py-16 bg-gradient-to-br from-green-50 to-blue-50">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">
-            🦎 Exotic Pets Paradise
-          </h1>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            Nuestro Catálogo Exótico
+          </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Descubre nuestra increíble colección de animales exóticos. 
-            Cada mascota viene con certificado de salud y guía de cuidados.
+            Cada mascota viene con certificado de salud y guía de cuidados completa.
           </p>
         </div>
 
