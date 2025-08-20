@@ -1,4 +1,5 @@
 import { X, Trash2, ShoppingBag } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Animal } from "@/types/Animal";
 
 interface CartProps {
@@ -10,12 +11,20 @@ interface CartProps {
 }
 
 export const Cart = ({ isOpen, onClose, items, onRemoveItem, totalPrice }: CartProps) => {
+  const navigate = useNavigate();
+
   if (!isOpen) return null;
 
   const handleCheckout = () => {
     if (items.length > 0) {
-      alert(`¡Gracias por tu compra! Total: $${totalPrice}`);
-      console.log("Checkout completed with items:", items);
+      onClose();
+      navigate("/checkout", { 
+        state: { 
+          cartItems: items, 
+          totalPrice: totalPrice 
+        } 
+      });
+      console.log("Redirecting to checkout with items:", items);
     }
   };
 
