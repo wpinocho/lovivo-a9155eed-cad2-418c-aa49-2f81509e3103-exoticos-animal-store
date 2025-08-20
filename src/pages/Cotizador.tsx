@@ -219,18 +219,114 @@ const Cotizador = () => {
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
       <Header cartItemsCount={0} onCartClick={() => {}} />
       
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Calculator className="w-12 h-12" />
-            <h1 className="text-4xl md:text-6xl font-bold">Cotizador Exótico</h1>
+      {/* Hero Section with Background Image */}
+      <div className="relative min-h-[70vh] overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&h=1080&fit=crop&crop=center')`,
+          }}
+        >
+          {/* Animated Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/80 via-teal-800/70 to-cyan-900/80">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 animate-pulse" />
           </div>
-          <p className="text-xl md:text-2xl text-emerald-100 max-w-3xl mx-auto">
-            Obtén cotizaciones precisas para tus animales exóticos favoritos, 
-            incluyendo envío, permisos y todos los costos asociados según tu ubicación.
-          </p>
+          
+          {/* Floating Particles */}
+          <div className="absolute inset-0">
+            {Array.from({ length: 30 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-white/30 rounded-full animate-bounce"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 4}s`,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Floating Animals */}
+          <div className="absolute inset-0 pointer-events-none">
+            {['🦎', '🐍', '🕷️', '🦂', '🐸', '🦋'].map((emoji, index) => (
+              <div
+                key={index}
+                className="absolute text-6xl opacity-20 animate-bounce"
+                style={{
+                  left: `${10 + (index * 15)}%`,
+                  top: `${20 + (index * 10)}%`,
+                  animationDelay: `${index * 0.5}s`,
+                  animationDuration: `${4 + Math.random() * 2}s`,
+                  transform: `rotate(${Math.random() * 360}deg)`,
+                }}
+              >
+                {emoji}
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 flex items-center justify-center min-h-[70vh] px-4">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="p-4 bg-white/20 backdrop-blur-sm rounded-full animate-spin-slow">
+                <Calculator className="w-16 h-16 text-white" />
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+                <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-cyan-300 bg-clip-text text-transparent animate-pulse">
+                  Cotizador
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-purple-300 via-pink-300 to-red-300 bg-clip-text text-transparent">
+                  Exótico
+                </span>
+              </h1>
+            </div>
+            
+            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed backdrop-blur-sm bg-white/10 p-6 rounded-2xl border border-white/20">
+              Obtén cotizaciones precisas para tus animales exóticos favoritos, 
+              incluyendo envío, permisos y todos los costos asociados según tu ubicación.
+              <span className="block mt-2 text-emerald-200 font-semibold">
+                ¡Precios transparentes desde cualquier parte del mundo!
+              </span>
+            </p>
+
+            {/* Animated Stats */}
+            <div className="flex flex-wrap justify-center gap-6 mb-8">
+              {[
+                { number: "50+", label: "Países Atendidos", icon: "🌍" },
+                { number: "24/7", label: "Soporte Experto", icon: "🔧" },
+                { number: "100%", label: "Garantía de Salud", icon: "💚" },
+              ].map((stat, index) => (
+                <div 
+                  key={index}
+                  className="text-center group hover:scale-110 transition-all duration-300 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20"
+                >
+                  <div className="text-3xl mb-2 group-hover:animate-bounce">{stat.icon}</div>
+                  <div className="text-2xl md:text-3xl font-bold text-white">{stat.number}</div>
+                  <div className="text-sm text-white/70">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="animate-bounce mt-12">
+              <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center mx-auto">
+                <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse" />
+              </div>
+              <p className="text-white/60 text-sm mt-2">Desliza para cotizar</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-full blur-xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-emerald-500/30 to-teal-500/30 rounded-full blur-xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full blur-xl animate-ping" />
       </div>
 
       <div className="container mx-auto px-4 py-12">
@@ -331,7 +427,7 @@ const Cotizador = () => {
             {/* Generate Quote Button */}
             <button
               onClick={generateQuotes}
-              className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-4 px-8 rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 font-bold text-lg flex items-center justify-center gap-3 shadow-lg"
+              className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-4 px-8 rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 font-bold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               <Calculator className="w-6 h-6" />
               Generar Cotización
